@@ -18,7 +18,7 @@ jobs:
           lfs: true
       - name: Setup
         run: |
-          mkdir -v -p ~/.local/share/godot/templates/${GODOT_VERSION}
+          mkdir -v -p ~/root/.local/share/godot/templates/${GODOT_VERSION}
           mv /root/.local/share/godot/templates/${GODOT_VERSION} ~/.local/share/godot/templates/${GODOT_VERSION}
       - name: Windows Build
         run: |
