@@ -19,7 +19,7 @@ jobs:
       - name: Setup
         run: |
           mkdir -v -p ~/root/.local/share/godot/templates/${GODOT_VERSION}
-          mv /root/.local/share/godot/templates/${GODOT_VERSION} ~/.local/share/godot/templates/${GODOT_VERSION}
+          mv /github/home/root/.local/share/godot/templates/${GODOT_VERSION} ~/.local/share/godot/templates/${GODOT_VERSION}
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
