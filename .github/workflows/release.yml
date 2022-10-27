@@ -49,5 +49,3 @@ jobs:
           build-args: |
             GODOT_VERSION=${{ needs.version.outputs.version }}
             RELEASE_NAME=${{ needs.version.outputs.release_name }}
-
-            
