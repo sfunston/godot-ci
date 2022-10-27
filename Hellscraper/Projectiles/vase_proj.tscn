@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://mo6j8u6ad72v"]
+
+[ext_resource type="Script" path="res://Projectiles/vase_proj.gd" id="1_f1btf"]
+[ext_resource type="Texture2D" uid="uid://b4kwjrio4yr4n" path="res://ArtAssets/Objects/VaseProjectileArt.png" id="2_b53bn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xu8o"]
+radius = 6.0
+
+[node name="VaseProj" type="Area2D"]
+script = ExtResource("1_f1btf")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_b53bn")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8xu8o")
+
+[connection signal="body_entered" from="." to="." method="_on_vase_proj_body_entered"]

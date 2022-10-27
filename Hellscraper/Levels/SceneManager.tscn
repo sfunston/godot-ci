@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0o5e6r3ukrj5"]
+
+[ext_resource type="PackedScene" uid="uid://bsblfbv41ior8" path="res://Levels/game_level.tscn" id="1_i7l37"]
+[ext_resource type="Script" path="res://Levels/SceneManager.gd" id="1_jw2gc"]
+[ext_resource type="AudioStream" uid="uid://cs683t5emg0jq" path="res://Music/Daytime (2).mp3" id="2_655bv"]
+[ext_resource type="Script" path="res://Levels/CanvasLayer.gd" id="3_tq2iu"]
+[ext_resource type="AudioStream" uid="uid://c8i5f32u8kbai" path="res://Music/Night Jam.mp3" id="3_vcpvn"]
+[ext_resource type="AudioStream" uid="uid://bo3dhc08yvaik" path="res://Music/Menu Music (2).mp3" id="4_vtk0b"]
+[ext_resource type="AudioStream" uid="uid://c28ageqcveair" path="res://Music/End Title _ Victory Sequence.mp3" id="5_3xikl"]
+[ext_resource type="AudioStream" uid="uid://bqryx4rdtv63v" path="res://Music/Final Encounter (3).mp3" id="6_ed20q"]
+
+[sub_resource type="Animation" id="Animation_5ertc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0nsl3"]
+resource_name = "fade_to_black"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ljd1"]
+resource_name = "fade_to_normal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5ana"]
+_data = {
+"RESET": SubResource("Animation_5ertc"),
+"fade_to_black": SubResource("Animation_0nsl3"),
+"fade_to_normal": SubResource("Animation_6ljd1")
+}
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_jw2gc")
+music = {
+"boss": ExtResource("6_ed20q"),
+"credits": ExtResource("5_3xikl"),
+"day": ExtResource("2_655bv"),
+"game_over": ExtResource("4_vtk0b"),
+"main_menu": ExtResource("4_vtk0b"),
+"night": ExtResource("3_vcpvn")
+}
+
+[node name="GameLevel" parent="." instance=ExtResource("1_i7l37")]
+
+[node name="FadeToBlackCanvas" type="CanvasLayer" parent="."]
+script = ExtResource("3_tq2iu")
+
+[node name="BlackScreen" type="ColorRect" parent="FadeToBlackCanvas"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeToBlackCanvas"]
+autoplay = "fade_to_black"
+libraries = {
+"": SubResource("AnimationLibrary_c5ana")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_655bv")
+volume_db = -8.0
+autoplay = true
+
+[connection signal="animation_finished" from="FadeToBlackCanvas/AnimationPlayer" to="FadeToBlackCanvas" method="_on_animation_player_animation_finished"]

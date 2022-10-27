@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvxkheied4x8b"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_8dco8"]
+[ext_resource type="Script" path="res://Offerings/chest.gd" id="2_6xra1"]
+[ext_resource type="Texture2D" uid="uid://b5nkxg2wkxhss" path="res://ArtAssets/Objects/candles_chest.png" id="2_jbsal"]
+[ext_resource type="PackedScene" uid="uid://d4f3ildu1ykho" path="res://Projectiles/coin.tscn" id="2_wxrfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw2f6"]
+size = Vector2(18, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na0bm"]
+size = Vector2(26, 27)
+
+[node name="Chest" instance=ExtResource("1_8dco8")]
+script = ExtResource("2_6xra1")
+cooldown = 0.1
+projectile = ExtResource("2_wxrfb")
+
+[node name="CollisionShape2d" parent="." index="0"]
+shape = SubResource("RectangleShape2D_aw2f6")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_jbsal")
+hframes = 2
+frame = 2
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_na0bm")

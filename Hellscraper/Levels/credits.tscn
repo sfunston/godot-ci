@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://co1qg4vbhi246"]
+
+[ext_resource type="Texture2D" uid="uid://o74too2dbd2e" path="res://Menu/Win Screen Art.png" id="1_6jy5a"]
+
+[node name="credits" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2d" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(587, 323)
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("1_6jy5a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 17.0
+offset_right = 1141.0
+offset_bottom = 632.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.737255, 0.737255, 0.737255, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 27
+text = "Hellscraper                                              YOU WON!                                         Wild Jam #50
+
+Good Fortune Gang:                                                           gamejammerbois@gmail.com
+
+Sean Maxwell
+Tanner Maxwell
+Sam Funston
+Guy Connor Lester
+Jon Kim
+Spencer Turner
+
+Assets: 
+Home sprites:   https://cupnooble.itch.io/
+Furniture sprites:   https://www.kenney.nl/assets/roguelike-rpg-pack
+
+Tools: Godot, Midjourney, Pixelorama, Pyxel, Pixelit, Aesprite, DoorDash, Discord"

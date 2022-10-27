@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvqtdbvfgccem"]
+
+[ext_resource type="PackedScene" uid="uid://cvxkheied4x8b" path="res://Offerings/chest.tscn" id="1_bvlr5"]
+[ext_resource type="PackedScene" uid="uid://p6j0t2xt0142" path="res://Projectiles/fireball.tscn" id="2_dbqxc"]
+[ext_resource type="Script" path="res://Offerings/BaseOffering.gd" id="2_so2c7"]
+
+[node name="Candle" instance=ExtResource("1_bvlr5")]
+script = ExtResource("2_so2c7")
+cooldown = 0.3
+projectile = ExtResource("2_dbqxc")
+
+[node name="Sprite2d" parent="." index="1"]
+frame = 0

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://csaygje8fmmly"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_61y72"]
+[ext_resource type="Texture2D" uid="uid://cjfj618d1ujcu" path="res://ArtAssets/Objects/Amulet.png" id="2_dxdn5"]
+[ext_resource type="Script" path="res://Offerings/amuletoffering.gd" id="2_gb0nq"]
+[ext_resource type="PackedScene" uid="uid://dvc751lidqp46" path="res://Projectiles/amulet.tscn" id="3_stmyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4eq1"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qen8n"]
+size = Vector2(27, 28)
+
+[node name="Amulet" instance=ExtResource("1_61y72")]
+script = ExtResource("2_gb0nq")
+cooldown = 0.2
+on_cooldown = true
+projectile = ExtResource("3_stmyh")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_d4eq1")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_dxdn5")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_qen8n")

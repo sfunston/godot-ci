@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bns5dvrivx12v"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_wrttl"]
+[ext_resource type="Texture2D" uid="uid://b0k2juy5q8sxk" path="res://ArtAssets/Objects/LOGS.png" id="2_ljxnq"]
+[ext_resource type="PackedScene" uid="uid://cgmxi2vgqa2or" path="res://Projectiles/log_big.tscn" id="2_p7nts"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2kuya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af2o2"]
+size = Vector2(16, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1acv"]
+size = Vector2(31, 30)
+
+[node name="Logs" instance=ExtResource("1_wrttl")]
+physics_material_override = SubResource("PhysicsMaterial_2kuya")
+constant_linear_velocity = Vector2(1, 0)
+constant_angular_velocity = 0.349066
+cooldown = 1.0
+projectile = ExtResource("2_p7nts")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_af2o2")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_ljxnq")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_x1acv")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c28ageqcveair"
+path="res://.godot/imported/End Title _ Victory Sequence.mp3-115b84bdec03ecb7b9b8a4c4015f023d.mp3str"
+
+[deps]
+
+source_file="res://Music/End Title _ Victory Sequence.mp3"
+dest_files=["res://.godot/imported/End Title _ Victory Sequence.mp3-115b84bdec03ecb7b9b8a4c4015f023d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

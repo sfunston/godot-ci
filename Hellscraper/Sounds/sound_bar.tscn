@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnegmfsng581g"]
+
+[ext_resource type="Script" path="res://Sounds/SoundBar.gd" id="1_lcpa0"]
+[ext_resource type="Texture2D" uid="uid://r20dhwbro3dt" path="res://Sounds/audioOn.png" id="2_ugmx0"]
+[ext_resource type="Texture2D" uid="uid://cn2chspohfn6i" path="res://Sounds/audioOff.png" id="2_vhb01"]
+
+[node name="SoundBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lcpa0")
+sound_off = ExtResource("2_vhb01")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 50.0
+offset_bottom = 283.0
+scale = Vector2(1.4068, 1.18758)
+
+[node name="SoundIcon" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 48)
+layout_mode = 2
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("2_ugmx0")
+stretch_mode = 3
+
+[node name="AudioSlider" type="VSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 96)
+layout_mode = 2
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 33.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.01
+value = 0.66
+
+[connection signal="gui_input" from="VBoxContainer/SoundIcon" to="." method="_on_sound_icon_gui_input"]
+[connection signal="value_changed" from="VBoxContainer/AudioSlider" to="." method="_on_audio_slider_value_changed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://drro77i0hvwb4"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_eoerp"]
+[ext_resource type="PackedScene" uid="uid://d2sni1jh0p8i7" path="res://Projectiles/furball.tscn" id="2_ppq4b"]
+[ext_resource type="Texture2D" uid="uid://d3yurv0mvtf38" path="res://ArtAssets/Objects/Cat.png" id="2_vsgg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmbtb"]
+size = Vector2(15, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qprus"]
+size = Vector2(27, 28)
+
+[node name="Cat" instance=ExtResource("1_eoerp")]
+cooldown = 1.0
+projectile = ExtResource("2_ppq4b")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_tmbtb")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_vsgg4")
+hframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_qprus")

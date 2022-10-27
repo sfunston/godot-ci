@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://qss24w1gh4dd"]
+
+[ext_resource type="Script" path="res://Projectiles/plant.gd" id="1_fyrlf"]
+[ext_resource type="Texture2D" uid="uid://fm83xhmbqh23" path="res://ArtAssets/Weapons/Man Eating Plant.png" id="2_jm6xy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfig8"]
+size = Vector2(15.5, 15)
+
+[node name="Plant" type="Area2D"]
+script = ExtResource("1_fyrlf")
+damage = 1.0
+speed = 2
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+position = Vector2(0, -86)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jm6xy")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(0, -86)
+shape = SubResource("RectangleShape2D_pfig8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_fireball_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

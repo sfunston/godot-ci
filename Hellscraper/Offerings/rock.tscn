@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://h56eq4xxok4w"]
+
+[ext_resource type="PackedScene" uid="uid://cvxkheied4x8b" path="res://Offerings/chest.tscn" id="1_bvlr5"]
+[ext_resource type="Script" path="res://Offerings/BaseOffering.gd" id="2_0egey"]
+[ext_resource type="Texture2D" uid="uid://dw70w402l14n4" path="res://ArtAssets/Objects/Rock Object.png" id="2_tiwck"]
+[ext_resource type="PackedScene" uid="uid://be80q7l3jc7n6" path="res://Projectiles/rock.tscn" id="3_ctgbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqp8i"]
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oy1c"]
+size = Vector2(28, 27)
+
+[node name="Rock" instance=ExtResource("1_bvlr5")]
+script = ExtResource("2_0egey")
+cooldown = 0.666
+projectile = ExtResource("3_ctgbm")
+
+[node name="CollisionShape2d" parent="." index="0"]
+shape = SubResource("RectangleShape2D_oqp8i")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_tiwck")
+hframes = 1
+vframes = 1
+frame = 0
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+shape = SubResource("RectangleShape2D_4oy1c")

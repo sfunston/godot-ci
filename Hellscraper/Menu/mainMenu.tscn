@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://5cx3l1x8u6hv"]
+
+[ext_resource type="Script" path="res://Menu/mainMenu.gd" id="1_ikw4s"]
+[ext_resource type="AudioStream" uid="uid://b2s2hb0kqs5va" path="res://Music/Menu Music (2).mp3" id="2_w45df"]
+[ext_resource type="PackedScene" uid="uid://dnegmfsng581g" path="res://Sounds/sound_bar.tscn" id="3_h0hey"]
+[ext_resource type="Texture2D" uid="uid://cqyv86vqhwkn1" path="res://Menu/Title Art.png" id="4_5kl6k"]
+[ext_resource type="Texture2D" uid="uid://8moh8n6vev8u" path="res://Menu/Title Text Art.png" id="4_dhi17"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikw4s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -50.5
+offset_right = 35.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_right = 70.0
+offset_bottom = 31.0
+text = "Start"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 35.0
+offset_right = 70.0
+offset_bottom = 66.0
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 70.0
+offset_right = 70.0
+offset_bottom = 101.0
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_w45df")
+volume_db = -8.0
+autoplay = true
+
+[node name="SoundBar" parent="." instance=ExtResource("3_h0hey")]
+layout_mode = 1
+offset_left = -1156.0
+offset_top = -632.0
+offset_right = -1156.0
+offset_bottom = -632.0
+
+[node name="TitleArt" type="Sprite2D" parent="."]
+scale = Vector2(0.58, 0.58)
+z_index = -1
+texture = ExtResource("4_5kl6k")
+
+[node name="TitleText" type="Sprite2D" parent="."]
+position = Vector2(21, -214)
+scale = Vector2(3, 3)
+texture = ExtResource("4_dhi17")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

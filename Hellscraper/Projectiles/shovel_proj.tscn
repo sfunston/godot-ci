@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ai42y441h3y"]
+
+[ext_resource type="Texture2D" uid="uid://cjbdg03f32g53" path="res://ArtAssets/Weapons/Dirt Attack.png" id="1_dibm4"]
+[ext_resource type="Script" path="res://Projectiles/shovel_proj.gd" id="1_gxgdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omy1y"]
+size = Vector2(27, 6)
+
+[node name="ShovelProj" type="Area2D"]
+script = ExtResource("1_gxgdv")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+rotation = -0.139626
+texture = ExtResource("1_dibm4")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, 0)
+shape = SubResource("RectangleShape2D_omy1y")
+
+[connection signal="body_entered" from="." to="." method="_on_shovel_proj_body_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkhxcobwco748"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_5wrpj"]
+[ext_resource type="Texture2D" uid="uid://c0ylpb2fck4ml" path="res://ArtAssets/Objects/shovel.png" id="2_2qcoc"]
+[ext_resource type="PackedScene" uid="uid://b7ai42y441h3y" path="res://Projectiles/shovel_proj.tscn" id="2_dxpcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2y8i"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf82d"]
+size = Vector2(28, 30)
+
+[node name="Shovel" instance=ExtResource("1_5wrpj")]
+cooldown = 0.22
+projectile = ExtResource("2_dxpcy")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_n2y8i")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_2qcoc")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+shape = SubResource("RectangleShape2D_qf82d")

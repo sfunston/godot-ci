@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5fs8njvb2obi"]
+
+[ext_resource type="Script" path="res://Characters/Monster.gd" id="1_w2r0u"]
+[ext_resource type="PackedScene" uid="uid://8owasef8djxj" path="res://Characters/health_manager.tscn" id="2_c3mcb"]
+[ext_resource type="Texture2D" uid="uid://doj70a5f75ij6" path="res://ArtAssets/Characters/Green Gremlin.png" id="3_3e8hg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rukg"]
+radius = 5.09902
+
+[sub_resource type="Animation" id="Animation_ypgf4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0pa5v"]
+resource_name = "all"
+length = 0.25
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_utawb"]
+_data = {
+"RESET": SubResource("Animation_ypgf4"),
+"all": SubResource("Animation_0pa5v")
+}
+
+[node name="Monster" type="CharacterBody2D" groups=["mob"]]
+script = ExtResource("1_w2r0u")
+SPEED = 2.5
+attack_damage = 1.0
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1rukg")
+
+[node name="HealthManager" parent="." instance=ExtResource("2_c3mcb")]
+cur_health = 5.0
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("3_3e8hg")
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "all"
+libraries = {
+"": SubResource("AnimationLibrary_utawb")
+}

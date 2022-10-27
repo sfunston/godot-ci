@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgjbulh1e5ayq"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_pc2w5"]
+[ext_resource type="Texture2D" uid="uid://bxhj1xyqhmxom" path="res://ArtAssets/Objects/Square Broken Mirror .png" id="2_fqagc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agh23"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh3oh"]
+size = Vector2(24, 18)
+
+[node name="MirrorSquare" instance=ExtResource("1_pc2w5")]
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_agh23")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_fqagc")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_yh3oh")

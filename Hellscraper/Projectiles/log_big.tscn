@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgmxi2vgqa2or"]
+
+[ext_resource type="Script" path="res://Projectiles/log_big.gd" id="1_7f05m"]
+[ext_resource type="Texture2D" uid="uid://cf84o7vpkvqxs" path="res://ArtAssets/Objects/Chunky Wood.png" id="2_4n8e4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prnii"]
+size = Vector2(15, 16)
+
+[node name="log_big" type="Area2D"]
+gravity_space_override = 1
+script = ExtResource("1_7f05m")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+rotation = -0.0872665
+scale = Vector2(1.02719, 1.02719)
+texture = ExtResource("2_4n8e4")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -22)
+shape = SubResource("RectangleShape2D_prnii")
+
+[connection signal="body_entered" from="." to="." method="_on_glass_shard_body_entered"]

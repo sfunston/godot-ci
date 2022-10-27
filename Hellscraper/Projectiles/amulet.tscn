@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvc751lidqp46"]
+
+[ext_resource type="Script" path="res://Projectiles/amulet.gd" id="1_mx644"]
+[ext_resource type="Texture2D" uid="uid://dg7hgpbu7n5xv" path="res://ArtAssets/Weapons/Amulet Rainbow Arc.png" id="2_002un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prnii"]
+size = Vector2(15, 15)
+
+[node name="Amulet" type="Area2D"]
+script = ExtResource("1_mx644")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+rotation = 3.16428
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_002un")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_prnii")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_glass_shard_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cubpskums7yf0"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_fk067"]
+[ext_resource type="Texture2D" uid="uid://86o4lcco3iii" path="res://ArtAssets/Objects/Vase.png" id="2_akcjx"]
+[ext_resource type="PackedScene" uid="uid://mo6j8u6ad72v" path="res://Projectiles/vase_proj.tscn" id="2_jx027"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2xsb"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8jp8"]
+size = Vector2(26, 27)
+
+[node name="Vase" instance=ExtResource("1_fk067")]
+cooldown = 1.0
+projectile = ExtResource("2_jx027")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_d2xsb")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_akcjx")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_l8jp8")

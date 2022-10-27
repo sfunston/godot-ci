@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp2i0aopgyrrj"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_axwpf"]
+[ext_resource type="Script" path="res://Offerings/logbigoffering.gd" id="2_6jvhf"]
+[ext_resource type="Texture2D" uid="uid://cf84o7vpkvqxs" path="res://ArtAssets/Objects/Chunky Wood.png" id="2_w6pcd"]
+[ext_resource type="PackedScene" uid="uid://cgmxi2vgqa2or" path="res://Projectiles/log_big.tscn" id="3_7uc82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38isy"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpxi4"]
+size = Vector2(26, 16)
+
+[node name="LogBig" instance=ExtResource("1_axwpf")]
+script = ExtResource("2_6jvhf")
+cooldown = 5
+on_cooldown = true
+projectile = ExtResource("3_7uc82")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_38isy")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_w6pcd")
+hframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_dpxi4")

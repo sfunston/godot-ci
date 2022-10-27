@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b44pt5om3al7t"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_j8h2u"]
+[ext_resource type="PackedScene" uid="uid://cmowaq214s3uk" path="res://Projectiles/umbrella.tscn" id="2_87pf1"]
+[ext_resource type="Texture2D" uid="uid://cswuam4jca61d" path="res://ArtAssets/Objects/Hanway.png" id="2_llyi3"]
+[ext_resource type="Script" path="res://Offerings/UmbrellaOffering.gd" id="2_qsor6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47651"]
+size = Vector2(17, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcs0s"]
+size = Vector2(31, 31)
+
+[node name="Umbrella" instance=ExtResource("1_j8h2u")]
+script = ExtResource("2_qsor6")
+on_cooldown = true
+projectile = ExtResource("2_87pf1")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_47651")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_llyi3")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_tcs0s")

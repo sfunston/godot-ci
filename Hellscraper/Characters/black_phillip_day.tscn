@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://ilq3o164eivn"]
+
+[ext_resource type="Texture2D" uid="uid://co7m1dyh88lau" path="res://ArtAssets/Characters/Dark Philipppe Sitting.png" id="1_5oa37"]
+[ext_resource type="Script" path="res://Characters/black_phillip_day.gd" id="1_u3co6"]
+[ext_resource type="Texture2D" uid="uid://c4c0ju1q1g7te" path="res://ArtAssets/Objects/_.png" id="3_ageyp"]
+[ext_resource type="Texture2D" uid="uid://nm3nrchjbmvv" path="res://ArtAssets/Objects/spacebar.png" id="4_20yqt"]
+
+[sub_resource type="Animation" id="Animation_eed62"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q7lnl"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8fk7"]
+_data = {
+"RESET": SubResource("Animation_eed62"),
+"idle": SubResource("Animation_q7lnl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjcd"]
+size = Vector2(20, 15.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0e6w"]
+radius = 21.0238
+
+[node name="Black Phillip" type="CharacterBody2D"]
+script = ExtResource("1_u3co6")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("1_5oa37")
+hframes = 2
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2d")
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_r8fk7")
+}
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(5, 10.25)
+shape = SubResource("RectangleShape2D_rrjcd")
+
+[node name="Area2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Area2d"]
+position = Vector2(3, 5)
+shape = SubResource("CircleShape2D_c0e6w")
+
+[node name="QuestionMark" type="Sprite2D" parent="."]
+position = Vector2(2, -23)
+scale = Vector2(0.222656, 0.222656)
+texture = ExtResource("3_ageyp")
+
+[node name="Spacebar" type="Sprite2D" parent="."]
+position = Vector2(1.5, -16.0795)
+scale = Vector2(0.15625, 0.153409)
+texture = ExtResource("4_20yqt")

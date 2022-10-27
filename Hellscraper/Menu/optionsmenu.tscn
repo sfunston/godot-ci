@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://i7qw7s7es0hp"]
+
+[ext_resource type="Script" path="res://Menu/mainMenu.gd" id="1_ikw4s"]
+[ext_resource type="PackedScene" uid="uid://dnegmfsng581g" path="res://Sounds/sound_bar.tscn" id="2_75ao8"]
+
+[sub_resource type="Theme" id="Theme_gvq1w"]
+default_font_size = 35
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikw4s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(1152, 648)
+offset_left = -576.0
+offset_top = -320.0
+offset_right = 1344.0
+offset_bottom = 760.0
+scale = Vector2(0.600616, 0.600616)
+color = Color(0.352941, 0.168627, 0.164706, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 243.0
+offset_right = 35.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+offset_right = 70.0
+offset_bottom = 31.0
+text = "Back"
+
+[node name="SoundBar" parent="." instance=ExtResource("2_75ao8")]
+offset_left = -580.0
+offset_top = -312.0
+offset_right = -580.0
+offset_bottom = -312.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2i(600, 500)
+offset_left = -257.0
+offset_top = -268.0
+offset_right = 243.0
+offset_bottom = 232.0
+scale = Vector2(1, 0.995779)
+theme = SubResource("Theme_gvq1w")
+text = "                Controls
+         --------------------------
+Move Up:        W / Up Arrow
+Move Left:      A / Left Arrow
+Move Down:   S / Down Arrow 
+Move Right:    D / Right Arrow
+
+Pick Up/Drop Item: Space Bar"
+
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

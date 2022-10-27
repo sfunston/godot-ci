@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdbds28hikenh"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_3we6v"]
+[ext_resource type="Texture2D" uid="uid://cpagqyov8s0p2" path="res://ArtAssets/Objects/Round Broken Mirror .png" id="2_l0k26"]
+[ext_resource type="Script" path="res://Offerings/mirror_round.gd" id="2_us20e"]
+[ext_resource type="PackedScene" uid="uid://b3umn8vkdfqd8" path="res://Projectiles/glassshard.tscn" id="3_go5hb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjb35"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbbuf"]
+size = Vector2(26, 30)
+
+[node name="MirrorRound" instance=ExtResource("1_3we6v")]
+script = ExtResource("2_us20e")
+cooldown = 0.45
+projectile = ExtResource("3_go5hb")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_vjb35")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_l0k26")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_mbbuf")

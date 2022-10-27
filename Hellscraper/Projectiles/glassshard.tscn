@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3umn8vkdfqd8"]
+
+[ext_resource type="Script" path="res://Projectiles/glassshard.gd" id="1_slc3f"]
+[ext_resource type="Texture2D" uid="uid://b0e0kkex6r6fs" path="res://ArtAssets/Objects/glass_shard.png" id="2_e3mh6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prnii"]
+size = Vector2(5, 2)
+
+[node name="GlassShard" type="Area2D"]
+script = ExtResource("1_slc3f")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+rotation = -0.0872665
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_e3mh6")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_prnii")
+
+[connection signal="body_entered" from="." to="." method="_on_glass_shard_body_entered"]

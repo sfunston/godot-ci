@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2sni1jh0p8i7"]
+
+[ext_resource type="Script" path="res://Projectiles/furball.gd" id="1_agbpi"]
+[ext_resource type="Texture2D" uid="uid://cssfar68xnquo" path="res://ArtAssets/Weapons/Hair Ball.png" id="2_rqcsc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xu8o"]
+radius = 7.0
+
+[node name="Furball" type="Area2D"]
+script = ExtResource("1_agbpi")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_rqcsc")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8xu8o")
+
+[connection signal="body_entered" from="." to="." method="_on_furball_body_entered"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://lfmm2csr8iq6"]
+
+[ext_resource type="Script" path="res://Menu/endCredits.gd" id="1_7j4c5"]
+[ext_resource type="AudioStream" uid="uid://c28ageqcveair" path="res://Music/End Title _ Victory Sequence.mp3" id="2_mpon8"]
+[ext_resource type="PackedScene" uid="uid://dnegmfsng581g" path="res://Sounds/sound_bar.tscn" id="3_xlcrn"]
+[ext_resource type="Texture2D" uid="uid://bye13fymreodo" path="res://Menu/Win Screen Art.png" id="4_bg2r0"]
+
+[node name="endCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_7j4c5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mpon8")
+volume_db = -8.0
+autoplay = true
+
+[node name="SoundBar" parent="." instance=ExtResource("3_xlcrn")]
+layout_mode = 1
+offset_left = -1156.0
+offset_top = -632.0
+offset_right = -1156.0
+offset_bottom = -632.0
+
+[node name="WinArt" type="Sprite2D" parent="."]
+position = Vector2(571, 324)
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("4_bg2r0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 18.0
+offset_right = 126.0
+offset_bottom = 44.0
+text = "Hellscraper
+
+Wild Jam #50
+
+Credits
+Team Name: Good Fortune Gang
+Members:
+Sean Maxwell
+Tanner Maxwell
+Sam Funston
+Connor Lester
+Jon Kim
+Spencer Turner
+
+email: gamejammerbois@gmail.com
+
+
+Assets: (TODO: Give credit to resources used)
+
+"

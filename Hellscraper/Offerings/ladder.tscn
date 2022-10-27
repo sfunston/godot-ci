@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://mfbkrhva0esy"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_syfbj"]
+[ext_resource type="Texture2D" uid="uid://c4vrtg5vwnruh" path="res://ArtAssets/Objects/Ladder.png" id="2_42p5r"]
+[ext_resource type="PackedScene" uid="uid://4p67woietpcn" path="res://Projectiles/ladder.tscn" id="2_iiv07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egl2v"]
+size = Vector2(14, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f552"]
+size = Vector2(30, 38)
+
+[node name="Ladder" instance=ExtResource("1_syfbj")]
+cooldown = 999999.0
+projectile = ExtResource("2_iiv07")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_egl2v")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_42p5r")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_4f552")

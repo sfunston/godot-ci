@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btloni3nvjjs5"]
+
+[ext_resource type="Script" path="res://Projectiles/fire_poker.gd" id="1_qcbn4"]
+[ext_resource type="Texture2D" uid="uid://d8p6l8s8wht0" path="res://ArtAssets/Weapons/fire pocker.png" id="2_tt256"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrgjq"]
+size = Vector2(31, 2)
+
+[node name="FirePoker" type="Area2D"]
+script = ExtResource("1_qcbn4")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+rotation = -2.35619
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tt256")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_mrgjq")
+
+[connection signal="body_entered" from="." to="." method="_on_fire_poker_body_entered"]

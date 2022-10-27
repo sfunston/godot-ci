@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://de4on6knpiwfx"]
+
+[ext_resource type="PackedScene" uid="uid://lut6g25dii50" path="res://Characters/player.tscn" id="1_bgy84"]
+[ext_resource type="PackedScene" uid="uid://b2ikaijatfodi" path="res://Characters/monster.tscn" id="2_q8hsu"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_d7k2o"]
+
+[node name="Tanners Playland" type="Node2D"]
+
+[node name="NavigationRegion2d" type="NavigationRegion2D" parent="."]
+navpoly = SubResource("NavigationPolygon_d7k2o")
+
+[node name="Monster" parent="NavigationRegion2d" instance=ExtResource("2_q8hsu")]
+position = Vector2(-147, 95)
+
+[node name="Player" parent="NavigationRegion2d" instance=ExtResource("1_bgy84")]

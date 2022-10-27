@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://pnejvla4exyr"]
+
+[ext_resource type="Script" path="res://Projectiles/paintbrush.gd" id="1_cv6gi"]
+[ext_resource type="Texture2D" uid="uid://cdchr00b1l2pj" path="res://ArtAssets/Objects/paintbrush.png" id="2_skvgt"]
+[ext_resource type="Texture2D" uid="uid://dl2x2d0plryqf" path="res://ArtAssets/Objects/circle32.png" id="3_x58u7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xu8o"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_uhrvn"]
+offsets = PackedFloat32Array(0, 0.281928, 0.624096)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mscvl"]
+gradient = SubResource("Gradient_uhrvn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8rxmc"]
+particle_flag_disable_z = true
+initial_velocity_min = 1.44
+initial_velocity_max = 1.45
+angular_velocity_min = 2.16
+angular_velocity_max = 2.16
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.05
+scale_max = 0.25
+color_ramp = SubResource("GradientTexture1D_mscvl")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_noise_strength = 5.94
+
+[node name="paintbrush" type="Area2D"]
+script = ExtResource("1_cv6gi")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_skvgt")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8xu8o")
+
+[node name="PaintParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-7, 10)
+amount = 50
+speed_scale = 0.5
+randomness = 0.87
+process_material = SubResource("ParticleProcessMaterial_8rxmc")
+texture = ExtResource("3_x58u7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_fireball_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

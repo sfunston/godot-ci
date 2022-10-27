@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ylgootnheas5"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_gbeyg"]
+[ext_resource type="PackedScene" uid="uid://btloni3nvjjs5" path="res://Projectiles/fire_poker.tscn" id="2_xg4ht"]
+[ext_resource type="Texture2D" uid="uid://h6erx7e6ttxc" path="res://ArtAssets/Objects/Stove.png" id="2_xovya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6y0m"]
+size = Vector2(18, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_282di"]
+size = Vector2(28, 29)
+
+[node name="Stove" instance=ExtResource("1_gbeyg")]
+cooldown = 0.75
+projectile = ExtResource("2_xg4ht")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_w6y0m")
+
+[node name="Sprite2d" parent="." index="1"]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_xovya")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(-1, 7.5)
+shape = SubResource("RectangleShape2D_282di")

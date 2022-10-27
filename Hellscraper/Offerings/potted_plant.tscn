@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://1epqjj64ydi5"]
+
+[ext_resource type="PackedScene" uid="uid://2fqhk6wpffod" path="res://Offerings/base_offering.tscn" id="1_w412j"]
+[ext_resource type="PackedScene" uid="uid://qss24w1gh4dd" path="res://Projectiles/plant.tscn" id="2_12ufl"]
+[ext_resource type="Texture2D" uid="uid://dfcsagcwijak6" path="res://ArtAssets/Objects/pottedplant.png" id="2_kikwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg628"]
+size = Vector2(14, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7mqp"]
+size = Vector2(26, 31)
+
+[node name="PottedPlant" instance=ExtResource("1_w412j")]
+projectile = ExtResource("2_12ufl")
+
+[node name="CollisionShape2d" parent="." index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_sg628")
+
+[node name="Sprite2d" parent="." index="1"]
+texture = ExtResource("2_kikwx")
+hframes = 1
+vframes = 1
+
+[node name="CollisionShape2d" parent="Area2d" index="0"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_s7mqp")

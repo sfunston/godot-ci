@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://2fqhk6wpffod"]
+
+[ext_resource type="Script" path="res://Offerings/BaseOffering.gd" id="1_v0qxk"]
+[ext_resource type="Texture2D" uid="uid://ep5wqnnjw00j" path="res://ArtAssets/Objects/Chest.png" id="2_wktok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isvwf"]
+size = Vector2(18, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6xcy"]
+size = Vector2(24, 21.875)
+
+[node name="BaseOffering" type="StaticBody2D" groups=["Offering"]]
+position = Vector2(67, 21)
+script = ExtResource("1_v0qxk")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_isvwf")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("2_wktok")
+hframes = 5
+vframes = 2
+
+[node name="Area2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Area2d"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_f6xcy")
