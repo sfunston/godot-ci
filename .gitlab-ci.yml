@@ -14,7 +14,7 @@ stages:
   - deploy
 
 variables:
-  EXPORT_NAME: test-project
+  EXPORT_NAME: Hellscraper
 
 linux:
   stage: export
